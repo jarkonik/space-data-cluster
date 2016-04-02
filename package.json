@@ -5,7 +5,7 @@
   "main": "main.js",
   "private": true,
   "scripts": {
-    "start": "electron main.js"
+    "start": "concurrently \"electron client/main.js\" \"node server/main.js\""
   },
   "keywords": [
     "Electron",
@@ -20,6 +20,10 @@
   },
   "homepage": "https://github.com/atom/electron-quick-start#readme",
   "devDependencies": {
+    "concurrently": "^2.0.0",
     "electron-prebuilt": "^0.34.0"
+  },
+  "dependencies": {
+    "express": "^4.13.4"
   }
 }
