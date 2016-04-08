@@ -1,24 +1,13 @@
 {
-  "name": "electron-quick-start",
+  "name": "space-data-cluster",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
-  "main": "main.js",
-  "private": true,
+  "description": "Data Cluster for AGH Space Systems",
   "scripts": {
-    "start": "concurrently \"node server/main.js\" \"webpack --config client/config.js --progress --colors --watch\" \"electron electron/main.js\""
+    "start": "concurrently \"webpack --config client/config.js --progress --colors --watch\" \"electron server/main.js\""
   },
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial"
-  ],
   "author": "GitHub",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/atom/electron-quick-start/issues"
-  },
-  "homepage": "https://github.com/atom/electron-quick-start#readme",
+  "repository": "https://github.com/jarkonik/space-data-cluster",
+  "license": "GPL-3.0",
   "devDependencies": {
     "babel-core": "^6.7.4",
     "babel-eslint": "^6.0.2",
