@@ -1,12 +1,19 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   context: path.join(__dirname, 'js'),
-  entry: './main',
+  entry: [
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server',
+    './main',
+  ],
   output: {
     path: path.join(__dirname, '../', 'public'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   module: {
     loaders: [
@@ -21,18 +28,19 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react'],
-        },
+        loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015'],
       },
     ],
   },
   resolve: {
     root: [
-      path.resolve(__dirname, 'js'),
+      path.join(__dirname, 'js'),
     ],
     extensions: ['', '.js', '.jsx'],
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin(),
+    new CopyWebpackPlugin([{ from: path.join(__dirname, '..', 'node_modules', 'cesium', 'Build', 'Cesium'), to: 'cesium' }]),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 };
