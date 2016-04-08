@@ -18,6 +18,10 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.glb?$/,
+        loader: 'file',
+      },
+      {
         test: /\.css?$/,
         loader: 'style!css',
       },
@@ -35,6 +39,7 @@ module.exports = {
   resolve: {
     root: [
       path.join(__dirname, 'js'),
+      path.join(__dirname),
     ],
     extensions: ['', '.js', '.jsx'],
   },
